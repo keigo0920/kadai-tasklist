@@ -1,18 +1,18 @@
-class TasklistController < ApplicationController
+class TasklistsController < ApplicationController
   def index
-    @messages = Tasklist.all
+    @tasklists = Tasklist.all
   end
 
   def show
-    @message = Tasklist.find(params[:id])
+    @tasklists = Tasklist.find(params[:id])
   end
 
   def new
-    @message = Tasklist.new
+    @tasklist = Tasklist.new
   end
 
   def create
-    @message = Tasklist.find(params[:id])
+    @tasklist = Tasklist.find(params[:id])
   end
 
   def edit
@@ -23,4 +23,10 @@ class TasklistController < ApplicationController
 
   def destroy
   end
+  
+  private
+  def tasklist_params
+    params.require(:tasklist).permit(:content)
+  end
+  
 end
